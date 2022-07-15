@@ -18,7 +18,7 @@ const Register = () => {
         e.preventDefault();
         const { name, email, password } = user
         if (name && email && password) {
-            axios.post("http://localhost:6969/register", user)
+            axios.post("https://to-do-bk.herokuapp.com/register", user)
                 .then(res => alert(res.data.msg))
                 .catch(err=> alert(err.response.data.error))
         }

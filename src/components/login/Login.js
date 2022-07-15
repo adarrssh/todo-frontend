@@ -17,15 +17,16 @@ const Login = ({setLoginUser}) => {;
 
     const login = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:6969/login", user)
+        axios.post("https://to-do-bk.herokuapp.com/login", user)
             .then((res)=>{
+                console.log(res);
                alert(res.data.msg);
                setLoginUser(res.data.user)
                nav("/")
             })
             .catch((err)=>{
                 console.log(err);
-                alert(err.response.data.msg)
+                alert(err.response.data.error)
             })
         }
 
