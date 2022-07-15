@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-const Login = ({setLoginUser}) => {;
-    const nav = useNavigate()
+
+const Login = ({setLoginUser}) => {
+    const Navigate = useNavigate();
     const [user, setUser] = useState({
         name: "",
         password: ""
@@ -19,10 +20,9 @@ const Login = ({setLoginUser}) => {;
         e.preventDefault();
         axios.post("https://to-do-bk.herokuapp.com/login", user)
             .then((res)=>{
-                console.log(res);
                alert(res.data.msg);
                setLoginUser(res.data.user)
-               nav("/")
+                Navigate('/')
             })
             .catch((err)=>{
                 console.log(err);
