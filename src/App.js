@@ -10,6 +10,7 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+
 function App() {
   
   // stores the user object
@@ -28,8 +29,7 @@ function App() {
       setLoginUser(JSON.parse(retrievedObject));
       setTimeout(()=>{
         setLoad(false)
-      },1000)
-   
+      },3000)
     
   }, [])
 
@@ -63,24 +63,3 @@ function App() {
 }
 
 export default App;
-// if (checkUser) {
-  //   setCheckUser(false)
-  //   navigateToHome();
-  // }
-  
-  
-  
-  // // gets the user from localstorage
-  // const getLocalStorage = (data) => {
-    //   let retrievedObject = localStorage.getItem('user');
-    //   setLoginUser(JSON.parse(retrievedObject))
-    //   console.log(userLogin);
-    
-    // }
-    
-    
-    // const navigateToHome = () => {
-      //   navigate('/', { replace: true });
-      // }
-        // let navigate = useNavigate()
-      // const [checkUser, setCheckUser] = useState(false)
