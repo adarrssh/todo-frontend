@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({setLoginUser}) => {
+const Login = ({setLoginUser,setLocalStorage}) => {
     const Navigate = useNavigate();
     const [user, setUser] = useState({
         name: "",
@@ -22,13 +22,16 @@ const Login = ({setLoginUser}) => {
             .then((res)=>{
                alert(res.data.msg);
                setLoginUser(res.data.user)
-                Navigate('/')
+               setLocalStorage(res.data.user);
+               Navigate('/')
             })
             .catch((err)=>{
                 console.log(err);
                 alert(err.response.data.error)
             })
         }
+
+       
 
     
     return (

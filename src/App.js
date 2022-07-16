@@ -4,30 +4,83 @@ import Homepage from "./components/homepage/Homepage"
 import Login from "./components/login/Login"
 import Register from "./components/register/Register"
 import { Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import Loading from './components/Loading/Loading';
+import { useState, useEffect } from 'react';
 import {
-  BrowserRouter,
   Route,
   Routes
 } from "react-router-dom";
 function App() {
-  const [user, setLoginUser] = useState({}) 
-  console.log(user);
+  
+  // stores the user object
+  const [userLogin, setLoginUser] = useState({
+    name:"fads",
+    email:"pass",
+    password:"passwrod"
+  })
+
+  const [load, setLoad]=useState(true)
+
+  // looking for user in localstorage when the website loads up
+  useEffect(() => {
+    let retrievedObject = localStorage.getItem('user');
+      console.log(retrievedObject);
+      setLoginUser(JSON.parse(retrievedObject));
+      setTimeout(()=>{
+        setLoad(false)
+      },1000)
+   
+    
+  }, [])
+
+
+  if(load){
+    return (
+      <Loading/>
+    )
+  }
+  
+  // stores the user in localstorage
+  const setLocalStorage = (data) => {
+    var testObject = data;
+    localStorage.setItem('user', JSON.stringify(testObject))
+  }
+  
+  console.log(userLogin);
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route exact path='/'
+      <Routes>
+        <Route exact path='/'
           element=
-          {!user.name?<Navigate replace to={"/login"}/>:<Homepage user={user}/> }          
+          {!userLogin ? <Navigate replace to={"/login"} /> : <Homepage user={userLogin} />}
           />
-          <Route exact path='/login' element={<Login setLoginUser={setLoginUser} />} />
-          <Route exact path='/register' element={<Register />} />
-        </Routes>
-      </BrowserRouter>
+        <Route exact path='/login' element={<Login setLoginUser={setLoginUser} setLocalStorage={setLocalStorage} />} />
+        <Route exact path='/register' element={<Register />} />
+      </Routes>
 
     </div>
   );
 }
 
 export default App;
+// if (checkUser) {
+  //   setCheckUser(false)
+  //   navigateToHome();
+  // }
+  
+  
+  
+  // // gets the user from localstorage
+  // const getLocalStorage = (data) => {
+    //   let retrievedObject = localStorage.getItem('user');
+    //   setLoginUser(JSON.parse(retrievedObject))
+    //   console.log(userLogin);
+    
+    // }
+    
+    
+    // const navigateToHome = () => {
+      //   navigate('/', { replace: true });
+      // }
+        // let navigate = useNavigate()
+      // const [checkUser, setCheckUser] = useState(false)
