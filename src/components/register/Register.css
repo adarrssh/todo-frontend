@@ -13,7 +13,7 @@
 
 .r-main {
   height: 500px;
-  width: 30%;
+  width: 500px;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -87,7 +87,7 @@ input:focus {
   color: rgb(63, 63, 63);
 }
 
-
+/* 
 @media only screen and (max-width:970px){
 
     .r-main{
@@ -100,4 +100,38 @@ input:focus {
     .r-main{
         width: 70%;
     }
+} */
+
+
+
+@media only screen and (min-height:700px){
+  .r-main{
+      height: 600px;
+  }
+}
+
+@media only screen and (max-height:700px){
+  .r-main{
+      height: 500px;
+  }
+}
+
+/* after screen size 1200px */
+@media only screen and (min-width:1200px){
+  .r-main{
+      width: 600px;
+  }
+}
+
+@media only screen and (max-width:600px){
+
+  .r-body{
+      align-items: flex-start;
+  }
+  
+  .r-main{
+      margin-top: 2rem;
+      height: 600px;
+      width: 500px;
+  }
 }

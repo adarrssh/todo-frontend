@@ -14,7 +14,7 @@
 .l-main{
     position: relative;
     height: 70%;
-    width: 30%;
+    width: 500px;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -109,30 +109,28 @@ input:focus{
     }
 }
 
-@media only screen and (max-width:700px){
-
-    .l-main{
-        width: 70%;
-    }
-}
-
-
-
+/* after screen size 1200px */
 @media only screen and (min-width:1200px){
     .l-main{
         width: 500px;
     }
 }
 
+@media only screen and (max-width:600px){
 
-
-
-@media only screen and (max-width:1200px){
-
+    .l-body{
+        align-items: flex-start;
+    }
+    
     .l-main{
+        margin-top: 2rem;
+        height: 500px;
         width: 500px;
     }
 }
+
+
+
 
 
 
