@@ -80,7 +80,7 @@ const Register = () => {
                         </div>
                         <div className="inp">
                             <button className='submit' type="submit" onClick={register}>Register</button>
-                            <button className='submit' type="submit" onClick={()=>Navigate('/login')}>Login</button>
+                            <p>Aleardy a user? <span onClick={()=>Navigate('/login')}>login</span></p>                            
                         </div>
                     </div>
                 </div>

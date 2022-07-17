@@ -87,20 +87,14 @@ input:focus {
   color: rgb(63, 63, 63);
 }
 
-/* 
-@media only screen and (max-width:970px){
-
-    .r-main{
-        width: 50%;
-    }
+.r-main p{
+  color: white;
 }
 
-@media only screen and (max-width:650px){
-
-    .r-main{
-        width: 70%;
-    }
-} */
+.r-main span{
+  color:  rgb(98, 98, 207);
+  cursor: pointer;
+}
 
 
 
@@ -130,7 +124,7 @@ input:focus {
   }
   
   .r-main{
-      margin-top: 2rem;
+      margin-top: 4rem;
       height: 600px;
       width: 500px;
   }

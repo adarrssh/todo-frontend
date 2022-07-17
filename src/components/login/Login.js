@@ -69,7 +69,7 @@ const Login = ({ setLoginUser, setLocalStorage }) => {
                         </div>
                         <div className="inp">
                             <button className='submit' type="submit" onClick={login}>login</button>
-                            <button className='submit' type="submit" onClick={() => Navigate('/register')}>Register</button>
+                            <p>Don't have an account? <span onClick={()=>Navigate('/register')}>Register</span></p>                            
                         </div>
                     </div>
                 </div>

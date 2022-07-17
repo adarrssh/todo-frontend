@@ -95,6 +95,14 @@ input:focus{
     color: rgb(63, 63, 63);
 }
 
+.l-main p{
+    color: white;
+}
+
+.l-main span{
+    color:  rgb(98, 98, 207);
+    cursor: pointer;
+}
 
 
 @media only screen and (min-height:700px){
@@ -123,7 +131,7 @@ input:focus{
     }
     
     .l-main{
-        margin-top: 2rem;
+        margin-top: 4rem;
         height: 500px;
         width: 500px;
     }
