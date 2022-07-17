@@ -1,13 +1,23 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "./Login.css"
+import Loading from '../Loading/Loading';
 
-const Login = ({setLoginUser,setLocalStorage}) => {
+
+const Login = ({ setLoginUser, setLocalStorage }) => {
     const Navigate = useNavigate();
+    const [load, setLoad] = useState(false)
     const [user, setUser] = useState({
         name: "",
         password: ""
     })
+
+    if (load) {
+        return (
+            <Loading />)
+    }
+
     const handleChange = e => {
         const { name, value } = e.target
         setUser({
@@ -18,52 +28,52 @@ const Login = ({setLoginUser,setLocalStorage}) => {
 
     const login = (e) => {
         e.preventDefault();
-        axios.post("https://to-do-bk.herokuapp.com/login", user)
-            .then((res)=>{
-               alert(res.data.msg);
-               setLoginUser(res.data.user)
-               setLocalStorage(res.data.user);
-               Navigate('/')
-            })
-            .catch((err)=>{
-                console.log(err);
-                alert(err.response.data.error)
-            })
+        setLoad(true)
+        const { email, password } = user
+
+        if (email && password) {
+            axios.post("https://to-do-bk.herokuapp.com/login", user)
+                .then((res) => {
+                    setLoad(false)
+                    alert(res.data.msg);
+                    setLoginUser(res.data.user)
+                    setLocalStorage(res.data.user);
+                    Navigate('/')
+                })
+                .catch((err) => {
+                    setLoad(false)
+                    console.log(err);
+                    alert(err.response.data.error)
+                })
+
+        } else {
+            alert('invalid input')
+            setLoad(false)
         }
+    }
 
-       
 
-    
     return (
         <>
-            <div >
-                <div >
-                    Login To Your Account
+            <div className='l-body' >
+                <div className="l-main">
+                    <div className="l-heading">
+                        <h1>Login</h1>
+                    </div>
+                    <div className="form-div">
+                        <div className="inp">
+                            <input type="text" name="email" value={user.email || ""} onChange={handleChange} placeholder="Email" />
+                        </div>
+                        <div className="inp">
+                            <input type="password" name="password" value={user.password || ""} onChange={handleChange} placeholder="password" />
+                        </div>
+                        <div className="inp">
+                            <button className='submit' type="submit" onClick={login}>login</button>
+                            <button className='submit' type="submit" onClick={() => Navigate('/register')}>Register</button>
+                        </div>
+                    </div>
                 </div>
-                <div className="mt-8">
-                    <form autoComplete="off">
-                        <div >
-                            <div >
 
-                                <input type="text" name="email" value={user.email || ""} onChange={handleChange} placeholder="Your email" />
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-
-
-                                <input type="password"  name="password" value={user.password || ""} onChange={handleChange} placeholder="Your password" />
-                            </div>
-                        </div>
-
-                        <div>
-                            <button type="submit" onClick={login}>
-                                Login
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                
             </div>
 
         </>

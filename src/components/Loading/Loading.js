@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Loading.css"
+
 const Loading = () => {
   return (
     <div className='load-main'>
@@ -11,7 +12,7 @@ const Loading = () => {
 
         <div className="load-btm">
 
-          <div class="balls">
+          <div className="balls">
             <div></div>
             <div></div>
             <div></div>

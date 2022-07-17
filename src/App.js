@@ -25,7 +25,6 @@ function App() {
   // looking for user in localstorage when the website loads up
   useEffect(() => {
     let retrievedObject = localStorage.getItem('user');
-      console.log(retrievedObject);
       setLoginUser(JSON.parse(retrievedObject));
       setTimeout(()=>{
         setLoad(false)
@@ -46,9 +45,10 @@ function App() {
     localStorage.setItem('user', JSON.stringify(testObject))
   }
   
-  console.log(userLogin);
   return (
     <div className="App">
+      <div className="btns">
+      </div>
       <Routes>
         <Route exact path='/'
           element=
@@ -57,7 +57,6 @@ function App() {
         <Route exact path='/login' element={<Login setLoginUser={setLoginUser} setLocalStorage={setLocalStorage} />} />
         <Route exact path='/register' element={<Register />} />
       </Routes>
-
     </div>
   );
 }
