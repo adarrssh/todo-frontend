@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "./Login.css"
 import Loading from '../Loading/Loading';
+import Alert from 'react-bootstrap/Alert'
 
 
 const Login = ({ setLoginUser, setLocalStorage }) => {
@@ -57,6 +58,7 @@ const Login = ({ setLoginUser, setLocalStorage }) => {
         <>
             <div className='l-body' >
                 <div className="l-main">
+                    
                     <div className="l-heading">
                         <h1>Login</h1>
                     </div>
@@ -69,7 +71,7 @@ const Login = ({ setLoginUser, setLocalStorage }) => {
                         </div>
                         <div className="inp">
                             <button className='submit' type="submit" onClick={login}>login</button>
-                            <p>Don't have an account? <span onClick={()=>Navigate('/register')}>Register</span></p>                            
+                            <p>Don't have an account? <span onClick={() => Navigate('/register')}>Register</span></p>
                         </div>
                     </div>
                 </div>

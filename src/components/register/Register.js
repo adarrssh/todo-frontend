@@ -65,6 +65,8 @@ const Register = () => {
             <div className='r-body'>
 
                 <div className='r-main' >
+
+                    
                     <div className='r-heading'>
                         <h1>Register</h1>
                     </div>
